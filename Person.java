@@ -5,10 +5,10 @@
     private String birthCity;
 
     public Person(String firstName, String lastName, String mmName, String     birthCity) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mmName = mmName;
-        this.birthCity = birthCity;
+        this.firstName = firstName.toLowerCase();
+        this.lastName = lastName.toLowerCase();
+        this.mmName = mmName.toLowerCase();
+        this.birthCity = birthCity.toLowerCase();
     }
 
   //Get and Set
@@ -61,7 +61,7 @@
    //Method to gen Star Wars name
 
     public String getStarWarsName() {
-        String swFirstName = firstName.substring(0, 3)+ lastName.substring(0, 2);
+        String swFirstName = firstName.substring(0, 3)+ lastName.substring(0,1).toUpperCase();
         String swLastName = mmName.substring(0, 2) + birthCity.substring(0, 3);
         return swFirstName + " " + swLastName;
    }
@@ -70,7 +70,7 @@
 
    public String getSithLordName(){
        String sithFirstName = "Darth";
-       String sithLastName = firstName.substring(0,3) + lastName.substring(0,2);
+       String sithLastName = firstName.substring(0,3) + lastName.substring(0,1).toUpperCase();
        return sithFirstName + " " + sithLastName;
    }
 }
