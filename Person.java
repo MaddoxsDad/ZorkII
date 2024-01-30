@@ -10,7 +10,9 @@
         this.mmName = mmName;
         this.birthCity = birthCity;
     }
-  //Getters and Setters
+
+  //Get and Set
+
     public String getFirstName() {
         return firstName;
     }
@@ -31,11 +33,44 @@
         return mmName;
     }
 
-    public String getBirthCity() {
-        return birthCity;
+    public void setMmName(String mmName) {
+        this.mmName = mmName;
     }
  
+    public String getBirthCity() {
+        return  birthCity;
+    }
+    
     public void setBirthCity(String birthCity) {
         this.birthCity = birthCity;
     }
-   } 
+
+    //Method for vowel calculation
+  
+    public int getNumVowels() {
+        String fullName = firstName + lastName;
+        int numVowels = 0;
+        for (char ch : fullName.toLowerCase().toCharArray()) {
+            if(ch == 'a'|| ch == 'e'|| ch == 'i'||ch == 'o'|| ch == 'u'){
+                numVowels++;
+            }
+         }
+         return numVowels;
+   }
+
+   //Method to gen Star Wars name
+
+    public String getStarWarsName() {
+        String swFirstName = firstName.substring(0, 3)+ lastName.substring(0, 2);
+        String swLastName = mmName.substring(0, 2) + birthCity.substring(0, 3);
+        return swFirstName + " " + swLastName;
+   }
+
+   //Method to generate Sith Lord name
+
+   public String getSithLordName(){
+       String sithFirstName = "Darth";
+       String sithLastName = firstName.substring(0,3) + lastName.substring(0,2);
+       return sithFirstName + " " + sithLastName;
+   }
+}
