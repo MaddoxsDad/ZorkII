@@ -5,12 +5,19 @@
     private String birthCity;
 
     public Person(String firstName, String lastName, String mmName, String     birthCity) {
-        this.firstName = firstName.toLowerCase();
-        this.lastName = lastName.toLowerCase();
-        this.mmName = mmName.toLowerCase();
-        this.birthCity = birthCity.toLowerCase();
+        this.firstName = capitalizeFirstLetter(firstName);
+        this.lastName = capitalizeFirstLetter(lastName);
+        this.mmName = capitalizeFirstLetter(mmName);
+        this.birthCity = capitalizeFirstLetter(birthCity);
     }
 
+  //Attempt at a Helper method to ensure proper capitalization
+    private String capitalizeFirstLetter(String name) {
+        if (name == null || name.isEmpty()) {
+            return name;
+        }
+        return name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
+    }
   //Get and Set
 
     public String getFirstName() {
@@ -18,7 +25,7 @@
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = capitalizeFirstLetter(firstName);
     }
 
     public String getLastName() {
@@ -26,7 +33,7 @@
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = capitalizeFirstLetter(lastName);
     }
  
     public String getMmName() {
@@ -34,15 +41,15 @@
     }
 
     public void setMmName(String mmName) {
-        this.mmName = mmName;
+        this.mmName = capitalizeFirstLetter(mmName);
     }
  
     public String getBirthCity() {
-        return  birthCity;
+        return birthCity;
     }
     
     public void setBirthCity(String birthCity) {
-        this.birthCity = birthCity;
+        this.birthCity =capitalizeFirstLetter(birthCity);
     }
 
     //Method for vowel calculation
@@ -58,11 +65,11 @@
          return numVowels;
    }
 
-   //Method to gen Star Wars name
+   //Method to gen Star Wars name as well as ensuring correct capitalization
 
     public String getStarWarsName() {
-        String swFirstName = firstName.substring(0, 3)+ lastName.substring(0,1).toUpperCase();
-        String swLastName = mmName.substring(0, 2) + birthCity.substring(0, 3);
+        String swFirstName = Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1).toLowerCase();
+        String swLastName = Character.toUpperCase(lastName.charAt(0)) + lastName.substring(1).toLowerCase();
         return swFirstName + " " + swLastName;
    }
 
@@ -70,7 +77,7 @@
 
    public String getSithLordName(){
        String sithFirstName = "Darth";
-       String sithLastName = firstName.substring(0,3) + lastName.substring(0,1).toUpperCase();
+       String sithLastName = Character.toUpperCase(firstName.charAt(0)) + lastName.substring(1,3).toLowerCase();
        return sithFirstName + " " + sithLastName;
    }
 }
