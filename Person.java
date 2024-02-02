@@ -54,7 +54,7 @@
 
     //Method for vowel calculation
   
-    public int getNumVowels() {
+    public int countVowelsInName() {
         String fullName = firstName + lastName;
         int numVowels = 0;
         for (char ch : fullName.toLowerCase().toCharArray()) {
